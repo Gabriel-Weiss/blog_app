@@ -1,41 +1,23 @@
 const User = require("../models/User");
 
 const findAll = () => {
-  return User.findAll();
-};
-
-const findById = (id) => {
-  return User.findByPk(id);
+  return User.findAll({
+    attributes: ["id", "type", "name", "email"],
+    raw: true,
+  });
 };
 
 const findByName = (name) => {
-  return User.findOne({ where: { name: name } });
-};
-
-const deleteById = (id) => {
-  return User.destroy({ where: { id: id } });
+  return User.findOne({ where: { name } });
 };
 
 const createUser = (user) => {
-  var newUser = new User(user);
+  const newUser = new User(user);
   return newUser.save();
-};
-
-const updateUser = (user, id) => {
-  const updatedUser = {
-    type: user.type,
-    name: user.name,
-    email: user.email,
-    password: user.password,
-  };
-  return User.update(updatedUser, { where: { id: id } });
 };
 
 module.exports = {
   findAll,
-  findById,
   findByName,
-  deleteById,
   createUser,
-  updateUser,
 };

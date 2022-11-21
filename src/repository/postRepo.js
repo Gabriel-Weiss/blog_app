@@ -1,15 +1,34 @@
 const Post = require("../models/Post");
 
 const findAll = () => {
-  return Post.findAll();
+  return Post.findAll({
+    attributes: ["id", "title", "content", "is_hidden", "authorId"],
+    raw: true,
+  });
 };
 
-const findById = (id) => {
-  return Post.findByPk(id);
+const findAllByAuthor = (authorId) => {
+  return Post.findAll({
+    where: { authorId },
+    attributes: ["id", "title", "content", "is_hidden", "authorId"],
+    raw: true,
+  });
+};
+
+const findAllPublic = () => {
+  return Post.findAll({
+    where: { is_hidden: false },
+    attributes: ["id", "title", "content", "is_hidden", "authorId"],
+    raw: true,
+  });
 };
 
 const findByTitle = (title) => {
-  return Post.findOne({ where: { title: title } });
+  return Post.findOne({
+    where: { title: title },
+    attributes: ["id", "title", "content", "is_hidden", "authorId"],
+    raw: true,
+  });
 };
 
 const deleteById = (id) => {
@@ -22,17 +41,18 @@ const createPost = (post) => {
 };
 
 const updatePost = (post, id) => {
-  const updatedPost = {
+  var updatedPost = {
     title: post.title,
     content: post.content,
     isHidden: post.isHidden,
   };
-  return Post.update(updatedPost, { where: { id: id } });
+  return Post.update(updatedPost, { where: { id } });
 };
 
 module.exports = {
   findAll,
-  findById,
+  findAllByAuthor,
+  findAllPublic,
   findByTitle,
   deleteById,
   createPost,

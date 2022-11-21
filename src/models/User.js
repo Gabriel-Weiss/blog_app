@@ -3,6 +3,16 @@ const { db } = require("../config/dbConnection");
 const UserType = require("../constants/UserType");
 const Post = require("./Post");
 
+/*
+User object will have {
+  id: primary key number, 
+  type: enum string,
+  name: unique string,
+  email: unique string,
+  password: string
+} properties
+*/
+
 const User = db.define(
   "user",
   {

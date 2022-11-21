@@ -7,18 +7,18 @@ const db = new Sequelize(
   {
     host: process.env.DATABASE_HOST,
     dialect: process.env.DATABASE_DIALECT,
-    // logging: false,
+    logging: false,
   }
 );
 
 const connectDatabase = async () => {
   try {
     await db.authenticate();
-    console.log("Connection has been established successfully.");
-    // await db.sync();
+    console.log("Connection established successfully.");
+    await db.sync();
     // await db.sync({ force: true });
-    await db.sync({ alter: true });
-    console.log("All models were synchronized successfully.");
+    // await db.sync({ alter: true });
+    console.log("Models synchronized successfully.");
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }

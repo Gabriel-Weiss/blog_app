@@ -1,3 +1,7 @@
+/*
+Simple error handler for different environments in app
+ */
+
 const errorHandler = (err, req, res, next) => {
   const statusCode = res.statusCode ? res.statusCode : 500;
   res.status(statusCode);
@@ -7,4 +11,4 @@ const errorHandler = (err, req, res, next) => {
   });
 };
 
-module.exports = { errorHandler };
+module.exports = errorHandler;

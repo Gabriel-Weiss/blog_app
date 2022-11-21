@@ -1,6 +1,16 @@
 const { DataTypes, Model } = require("sequelize");
 const { db } = require("../config/dbConnection");
 
+/*
+Post object will have {
+  id:primary key number, 
+  title:unique string,
+  content: string,
+  isHidden: boolean default(false)
+  authorId: refrence to User model id
+} properties
+*/
+
 const Post = db.define(
   "post",
   {
