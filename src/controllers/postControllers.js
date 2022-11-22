@@ -148,7 +148,7 @@ const updatePostHandler = asyncHandler(async (req, res) => {
 });
 
 //  @description Delete a post
-//  @route DELETE /posts/self
+//  @route DELETE /posts/:id
 //  @access public
 //  <accessible only by logged users,
 //   bloggers can delete only owning posts,
