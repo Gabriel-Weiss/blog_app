@@ -1,0 +1,16 @@
+# See https://nodejs.org/en/docs/guides/nodejs-docker-webapp/#dockerignore-file for more info about ignoring files.
+
+# dependencies
+node_modules
+
+# testing
+.coverage
+.coverage.*
+
+# misc
+.vscode
+.github
+.git
+.env
+
+npm-debug.log

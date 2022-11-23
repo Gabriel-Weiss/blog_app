@@ -58,7 +58,7 @@ const signInHandler = asyncHandler(async (req, res) => {
   res.json({ accessToken });
 });
 
-//  @description Login user
+//  @description Logup user
 //  @route POST /auth/signup
 //  @access public <not reacheable by admin>
 const signUpHandler = asyncHandler(async (req, res) => {

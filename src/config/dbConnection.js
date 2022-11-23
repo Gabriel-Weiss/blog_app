@@ -1,12 +1,12 @@
 const { Sequelize } = require("sequelize");
 
 const db = new Sequelize(
-  process.env.DATABASE_NAME,
-  process.env.DATABASE_USER,
-  process.env.DATABASE_PASS,
+  process.env.DATABASE_NAME || "blog_app",
+  process.env.DATABASE_USER || "postgres",
+  process.env.DATABASE_PASS || "postgrespw",
   {
-    host: process.env.DATABASE_HOST,
-    dialect: process.env.DATABASE_DIALECT,
+    host: process.env.DATABASE_HOST || "postgres",
+    dialect: process.env.DATABASE_DIALECT || "postgres",
     logging: false,
   }
 );
